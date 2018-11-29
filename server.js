@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const databaseConfig = require("./database.config.js");
 const user = require("./controllers/user.js");
 
@@ -19,6 +20,7 @@ mongoose
     exit();
   });
 
+app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("server is running!!");
 });
@@ -29,5 +31,5 @@ app.get("/user", user.listAll);
 // app.delete("user/:userId", user.delete);
 
 app.listen(port, () => {
-  console.log("server is listening port 300");
+  console.log("server is listening port 3000");
 });
